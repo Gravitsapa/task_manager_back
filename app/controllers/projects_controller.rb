@@ -4,14 +4,14 @@ class ProjectsController < ApplicationController
   # GET /projects
   def index
     @projects = Project.all
-
+    
     render json: @projects
   end
 
   # GET /projects/1
-  def show
-    render json: @project
-  end
+#  def show
+#    render json: @project
+#  end
 
   # POST /projects
   def create
