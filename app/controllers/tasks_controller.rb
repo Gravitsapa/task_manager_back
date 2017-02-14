@@ -1,18 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :update, :destroy]
 
-  # GET /tasks
-#  def index
-#    @tasks = Task.all
-#
-#    render json: @tasks
-#  end
-
-  # GET /tasks/1
-#  def show
-#    render json: @task
-#  end
-
   # POST /tasks
   def create
     @task = Task.new(task_params)
@@ -38,6 +26,14 @@ class TasksController < ApplicationController
     @task.destroy
   end
 
+  def sort
+    tasks_length = params[:tasks].length
+    params[:tasks].each_with_index do |k, v|
+      Task.where(project_id: params[:project_id]).update(k, priority: tasks_length - v)
+    end
+    render body: nil
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
@@ -46,6 +42,6 @@ class TasksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def task_params
-      params.require(:task).permit(:name, :status, :project_id)
+      params.require(:task).permit(:name, :status, :priority, :project_id)
     end
 end

@@ -8,11 +8,6 @@ class ProjectsController < ApplicationController
     render json: @projects
   end
 
-  # GET /projects/1
-#  def show
-#    render json: @project
-#  end
-
   # POST /projects
   def create
     @project = Project.new(project_params)
