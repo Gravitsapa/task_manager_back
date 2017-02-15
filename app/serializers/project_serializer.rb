@@ -3,6 +3,6 @@ class ProjectSerializer < ActiveModel::Serializer
   has_many :tasks
 
   def tasks
-    object.tasks.order(priority: :desc, id: :asc)
+    object.tasks.order(priority: :desc, updated_at: :asc)
   end
 end
