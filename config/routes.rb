@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post 'user_token' => 'user_token#create'
   resources :users
   resources :projects, except: [:show] do
     resources :tasks, only: [:create, :update, :destroy] do
