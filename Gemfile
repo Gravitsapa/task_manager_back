@@ -29,6 +29,8 @@ group :development, :test do
   gem 'byebug', platform: :mri
 end
 
+gem 'rails_12factor', group: :production
+
 group :development do
   gem 'listen', '~> 3.0.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring

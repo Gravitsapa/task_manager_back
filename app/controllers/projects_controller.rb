@@ -3,14 +3,14 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    @projects = Project.all
-    
+    @projects = current_user.projects.order(:created_at)
+
     render json: @projects
   end
 
   # POST /projects
   def create
-    @project = Project.new(project_params)
+    @project = current_user.projects.build(project_params)
 
     if @project.save
       render json: @project, status: :created, location: @project
